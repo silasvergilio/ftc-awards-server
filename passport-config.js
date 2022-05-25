@@ -4,9 +4,7 @@ var db = require('./connection');
 var db_sync = require('./connection-sync');
 
 function initialize(passport) {
-    console.log("initialize passport");
     const authenticateUser = async (userName, password, done) => {
-        console.log("Auth");
         var sql = 'SELECT * FROM Users WHERE userName = ? ';
         let values = [userName];
         var user;

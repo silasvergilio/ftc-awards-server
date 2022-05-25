@@ -47,7 +47,7 @@ app.use(session({
   secret: "AUSHhu",
   resave: false,
   saveUninitialized: false,
-  store: sessionStore
+ // store: sessionStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
