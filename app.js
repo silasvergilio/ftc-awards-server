@@ -7,7 +7,7 @@ var cors = require('cors')
 var passport = require('passport');
 var db = require('./connection');
 var session = require('express-session');
-const MongoStore = require('connect-mongo');
+var MySQLStore = require('express-mysql-session')(session);
 
 
 var indexRouter = require('./routes/index');
@@ -16,6 +16,15 @@ var teamsRouter = require('./routes/teams');
 var awardsRouter = require('./routes/awards');
 
 //require('dotenv').config()
+
+var options = {
+	host: "us-cdbr-east-05.cleardb.net",
+	user: "bc231dc796d45c",
+	password: "106a10a0",
+	database: "heroku_cf8b471fbab3885"
+};
+
+var sessionStore = new MySQLStore(options);
 
 const initializePassport = require('./passport-config');
 initializePassport(passport);
@@ -37,7 +46,7 @@ app.use(session({
   secret:"AUSHhu",
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create(options)
+  store: sessionStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
