@@ -6,7 +6,8 @@ var logger = require('morgan');
 var cors = require('cors')
 var passport = require('passport');
 var db = require('./connection');
-var session = require('cookie-session');
+var session = require('express-session');
+var MySQLStore = require('express-mysql-session')(session);
 
 
 var indexRouter = require('./routes/index');
@@ -36,6 +37,7 @@ app.use(session({
   secret:"AUSHhu",
   resave: false,
   saveUninitialized: false,
+  store: MySQLStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
