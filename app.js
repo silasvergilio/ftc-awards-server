@@ -33,7 +33,7 @@ app.use(cors({
 }));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret:"AUSHhu",
   resave: false,
   saveUninitialized: false,
 }));
