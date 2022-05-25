@@ -24,7 +24,6 @@ var options = {
   database: "heroku_cf8b471fbab3885"
 };
 
-var sessionStore = new MySQLStore(options);
 
 const initializePassport = require('./passport-config');
 initializePassport(passport);
