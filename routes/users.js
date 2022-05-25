@@ -45,6 +45,8 @@ router.post('/login',
 
 router.post('/', jsonParser, function (req, res, next) {
 
+  console.log("Console test");
+
   if (req.body.password == req.body.repeatPassword) {
 
 
