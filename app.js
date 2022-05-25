@@ -40,14 +40,13 @@ app.use(cors({
   origin: "https://spa-ftc-awards.herokuapp.com",
   methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
   credentials: true,
-  
 }));
 
 app.use(session({
-  secret: "AUSHhu",
+  secret: "secret",
   resave: false,
   saveUninitialized: false,
- // store: sessionStore
+  store: sessionStore
 }));
 app.use(passport.initialize());
 app.use(passport.session());
