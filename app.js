@@ -14,7 +14,7 @@ var usersRouter = require('./routes/users');
 var teamsRouter = require('./routes/teams');
 var awardsRouter = require('./routes/awards');
 
-require('dotenv').config()
+//require('dotenv').config()
 
 const initializePassport = require('./passport-config');
 initializePassport(passport);
