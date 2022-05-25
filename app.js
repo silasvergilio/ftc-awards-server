@@ -7,7 +7,7 @@ var cors = require('cors')
 var passport = require('passport');
 var db = require('./connection');
 var session = require('express-session');
-var MySQLStore = require('express-mysql-session')(session);
+const MongoStore = require('connect-mongo');
 
 
 var indexRouter = require('./routes/index');
@@ -37,7 +37,7 @@ app.use(session({
   secret:"AUSHhu",
   resave: false,
   saveUninitialized: false,
-  store: MySQLStore
+  store: MongoStore.create(options)
 }));
 app.use(passport.initialize());
 app.use(passport.session());
