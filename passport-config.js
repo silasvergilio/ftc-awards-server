@@ -5,6 +5,7 @@ var db_sync = require('./connection-sync');
 
 function initialize(passport) {
     const authenticateUser = async (userName, password, done) => {
+        console.log("Auth");
         var sql = 'SELECT * FROM Users WHERE userName = ? ';
         let values = [userName];
         var user;
@@ -13,7 +14,7 @@ function initialize(passport) {
             if (err) user = null;
             else {
                 user = result[0];
-                console.log(user);
+               
                 if (user == null) {
                     return done(null, false, {
                         message: "Erro login"
