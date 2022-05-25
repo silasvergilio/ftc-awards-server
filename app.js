@@ -27,7 +27,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(cors({ 
-    origin: "http://localhost:8080",
+    origin: ".herokuapp.com",
     methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
     credentials: true,
 }));
