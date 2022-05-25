@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 var passport = require('passport');
 var db = require('./connection');
-var session = require('express-session');
+var session = require('cookie-session');
 var MySQLStore = require('express-mysql-session')(session);
 
 
