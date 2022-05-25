@@ -11,8 +11,7 @@ var jsonParser = bodyParser.json()
 /* GET teams listing. */
 router.get('/', function (req, res, next) {
 
- 
-    console.log("get teams");
+  //console.log(req.user());
     var sql = 'SELECT * FROM teams';
     db.query(sql, (err, result) => {
       if (err) throw err;
