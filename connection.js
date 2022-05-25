@@ -10,8 +10,6 @@ var connection = mysql.createPool({
   database: dbConfig.DB,
 });
 
-connection.connect((err) => {
-  if (err) throw err;
-})
+
 
 module.exports = connection;
