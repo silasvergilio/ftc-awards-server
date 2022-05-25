@@ -8,10 +8,12 @@ function initialize(passport) {
         var sql = 'SELECT * FROM Users WHERE userName = ? ';
         let values = [userName];
         var user;
+      
         db.query(sql, values, (err, result) => {
             if (err) user = null;
             else {
                 user = result[0];
+                console.log(user);
                 if (user == null) {
                     return done(null, false, {
                         message: "Erro login"
