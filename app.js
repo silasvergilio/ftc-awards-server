@@ -43,11 +43,11 @@ app.use(cors({
 }));
 
 app.use(session({
-  secret: "secret",
-  resave: false,
-  saveUninitialized: false,
-  store: sessionStore,
-  cookie: { secure: true }
+  name: 'session',
+  keys: [/* secret keys */],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
 
 }));
 app.use(passport.initialize());
