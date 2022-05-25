@@ -1,12 +1,13 @@
 var mysql = require('mysql')
 require('dotenv').config();
+var dbConfig = require('./dbconfig');
 
 var connection = mysql.createConnection({
-    host     : process.env.DB_HOST,
-    user     : process.env.DB_USER,
-    password : process.env.DB_PASS,
-    port: process.env.DB_PORT,
-    database : "ftcawards",
+    host     : dbConfig.HOST,
+    user     : dbConfig.USER,
+    password : dbConfig.PASSWORD,
+    //port: process.env.DB_PORT,
+    database : dbConfig.DB,
   });
 
   connection.connect((err) => {
