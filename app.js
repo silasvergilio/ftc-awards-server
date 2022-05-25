@@ -18,10 +18,10 @@ var awardsRouter = require('./routes/awards');
 //require('dotenv').config()
 
 var options = {
-	host: "us-cdbr-east-05.cleardb.net",
-	user: "bc231dc796d45c",
-	password: "106a10a0",
-	database: "heroku_cf8b471fbab3885"
+  host: "us-cdbr-east-05.cleardb.net",
+  user: "bc231dc796d45c",
+  password: "106a10a0",
+  database: "heroku_cf8b471fbab3885"
 };
 
 var sessionStore = new MySQLStore(options);
@@ -36,14 +36,14 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(cors({ 
-    origin: ".herokuapp.com",
-    methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
-    credentials: true,
+app.use(cors({
+  origin: ".herokuapp.com",
+  methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
+  credentials: true,
 }));
 
 app.use(session({
-  secret:"AUSHhu",
+  secret: "AUSHhu",
   resave: false,
   saveUninitialized: false,
   store: sessionStore
