@@ -43,7 +43,7 @@ app.use(cors({
 
 app.use(session({
   name: 'session',
-  keys: [/* secret keys */],
+  keys: ['ftc-session-key'],
 
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
