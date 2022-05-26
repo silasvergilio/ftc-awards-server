@@ -6,7 +6,7 @@ var logger = require('morgan');
 var cors = require('cors')
 var passport = require('passport');
 var db = require('./connection');
-var session = require('cookie-session');
+var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 
 
@@ -42,12 +42,13 @@ app.use(cors({
 }));
 
 app.use(session({
-  name: 'session',
-  keys: ['ftc-session-key'],
-
-  // Cookie Options
-  maxAge: 24 * 60 * 60 * 1000 // 24 hours
-
+  secret: 'Super Secret (change it)',
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'none', // must be 'none' to enable cross-site delivery
+    secure: 'true',
+  } // must be true if sameSite='none'
 }));
 app.use(passport.initialize());
 app.use(passport.session());
