@@ -41,10 +41,11 @@ router.get('/success', function (req, res, next) {
 
 router.post('/login',
   passport.authenticate('local', {
-  
     failureRedirect: '/users/fail',
-    successRedirect: '/users/success'
-  }));
+    //successRedirect: '/users/success'
+  }),  function(req, res) {
+    console.log("USER LOGGED");
+  });
 
 router.post('/', jsonParser, function (req, res, next) {
 
