@@ -14,6 +14,7 @@ var saltRounds = 7;
 
 /* GET users listing. */
 router.get('/',checkAuth, function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
   res.send(req.user());
 });
 
@@ -25,6 +26,7 @@ router.get('/fail', function (req, res, next) {
 });
 
 router.get('/success', function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Credentials', 'true')
   console.log(req.user());
   return res.send({
     user: {
@@ -39,6 +41,7 @@ router.get('/success', function (req, res, next) {
 
 router.post('/login',
   passport.authenticate('local', {
+  
     failureRedirect: '/users/fail',
     successRedirect: '/users/success'
   }));
