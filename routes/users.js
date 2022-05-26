@@ -44,7 +44,11 @@ router.post('/login',
     failureRedirect: '/users/fail',
     //successRedirect: '/users/success'
   }),  function(req, res) {
-    res.send(req.user);
+    res.send(
+      {
+      status: "success",
+      user:req.user
+      });
   });
 
 router.post('/', jsonParser, function (req, res, next) {
