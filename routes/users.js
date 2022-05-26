@@ -44,7 +44,7 @@ router.post('/login',
     failureRedirect: '/users/fail',
     //successRedirect: '/users/success'
   }),  function(req, res) {
-    console.log("USER LOGGED");
+    res.send(req.user);
   });
 
 router.post('/', jsonParser, function (req, res, next) {
