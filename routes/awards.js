@@ -33,6 +33,19 @@ router.put('/:award', jsonParser, function (req, res) {
 
 });
 
+router.delete('/:award', jsonParser, function (req, res) {
+
+  var sql = 'DELETE FROM ?? WHERE Teams_idTime = ?';
+  var values = [req.params.award,req.body.id]
+
+  db.query(sql, values, function (err, result) {
+    if (err) throw err;
+    console.log("1 record deleted");
+    res.send("Deleted");
+  });
+
+});
+
 
 router.post('/:award', jsonParser, function (req, res) {
 
