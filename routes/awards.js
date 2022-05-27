@@ -53,7 +53,11 @@ router.post('/:award', jsonParser, function (req, res) {
     var values = [req.params.award,req.body.motive,req.body.sala, req.body.text]
 
     db.query(sql, values, function (err, result) {
-      if (err) throw err;
+      if (err) {
+        res.status(500).send({
+          SqlError: err,
+          Status: 500
+        });}
       console.log("1 record inserted");
       res.send("Inserted");
     });
