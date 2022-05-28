@@ -56,6 +56,7 @@ router.post('/:award', jsonParser, function (req, res) {
       if (err) {
         res.status(500).send({
           SqlError: err,
+          errno: 1010,
           Status: 500
         });}
       console.log("1 record inserted");

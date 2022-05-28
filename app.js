@@ -14,6 +14,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var teamsRouter = require('./routes/teams');
 var awardsRouter = require('./routes/awards');
+var orderRouter = require('./routes/order');
+
 
 //require('dotenv').config()
 
@@ -65,6 +67,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/teams', teamsRouter);
 app.use('/awards', awardsRouter);
+app.use('/order', orderRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
