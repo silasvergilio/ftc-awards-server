@@ -37,11 +37,12 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(cors({
-  origin: "https://ftcawards.vercel.app",
-  methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE"],
-  credentials: true,
-}));
+// app.use(cors({
+//   origin: "https://ftcawards.vercel.app",
+//   methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE"],
+//   credentials: true,
+// }));
+app.use(cors());
 
 app.use(session({
   secret: 'Super Secret (change it)',
