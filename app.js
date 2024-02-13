@@ -19,13 +19,6 @@ var orderRouter = require('./routes/order');
 
 //require('dotenv').config()
 
-var options = {
-  host: "us-cdbr-east-05.cleardb.net",
-  user: "bc231dc796d45c",
-  password: "106a10a0",
-  database: "heroku_cf8b471fbab3885"
-};
-
 
 const initializePassport = require('./passport-config');
 initializePassport(passport);
@@ -38,7 +31,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 app.use(cors({
-  origin: "https://ftcawards.vercel.app",
+  origin: ["https://ftcawards.vercel.app","http://localhost:8080"],
   methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD", "DELETE"],
   credentials: true,
 }));

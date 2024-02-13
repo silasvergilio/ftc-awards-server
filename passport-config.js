@@ -13,7 +13,7 @@ function initialize(passport) {
             if (err) user = null;
             else {
                 user = result[0];
-               
+                console.log("Qual é o user ?",user)
                 if (user == null) {
                     return done(null, false, {
                         message: "Erro login"
@@ -21,7 +21,11 @@ function initialize(passport) {
                 }
 
                 try {
+                    console.log("password",password);
+                    console.log("a senha correta", user.password);
                     if (bcrypt.compareSync(password, user.password)) {
+                        console.log("pass informado",password)
+                        console.log("pass do user",user.password)
                         return done(null, user);
                     } else {
                         return done(null, false, {
@@ -29,6 +33,7 @@ function initialize(passport) {
                         })
                     }
                 } catch (e) {
+                    console.log("Erro", e);
                     return done(e);
                 }
             };

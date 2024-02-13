@@ -12,7 +12,7 @@ var jsonParser = bodyParser.json()
 router.get('/', function (req, res, next) {
 
   //console.log(req.user());
-    var sql = 'SELECT * FROM teams';
+    var sql = 'SELECT * FROM Teams';
     db.query(sql, (err, result) => {
       if (err) throw err;
       res.send(result);
@@ -23,7 +23,7 @@ router.get('/', function (req, res, next) {
 router.get('/:value', function (req, res, next) {
 
  
-    var sql = 'SELECT * FROM teams WHERE value = ?';
+    var sql = 'SELECT * FROM Teams WHERE value = ?';
     var values =  [req.params.value];
     db.query(sql,values, (err, result) => {
       if (err) throw err;
@@ -34,7 +34,7 @@ router.get('/:value', function (req, res, next) {
 
 router.post('/', jsonParser, function (req, res) {
 
-    var sql = 'INSERT INTO teams (state,text,value,school) VALUES (?,?,?,?)';
+    var sql = 'INSERT INTO Teams (state,text,value,school) VALUES (?,?,?,?)';
     var values = [req.body.state, req.body.text, req.body.value, req.body.school]
 
     db.query(sql, values, function (err, result) {
