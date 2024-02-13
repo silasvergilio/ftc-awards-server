@@ -7,7 +7,8 @@ var cors = require('cors')
 var passport = require('passport');
 var db = require('./connection');
 var session = require('express-session');
-var MySQLStore = require('express-mysql-session')(session);
+const MemoryStore = require('memorystore')(session)
+//var MySQLStore = require('express-mysql-session')(session);
 
 
 var indexRouter = require('./routes/index');
@@ -36,15 +37,18 @@ app.use(cors({
   credentials: true,
 }));
 
-// app.use(session({
-//   secret: 'Super Secret (change it)',
-//   resave: true,
-//   saveUninitialized: false,
-//   cookie: {
-//     sameSite: 'none', // must be 'none' to enable cross-site delivery
-//     secure: 'true',
-//   } // must be true if sameSite='none'
-// }));
+app.use(session({
+  secret: 'Super Secret (change it)',
+  store: new MemoryStore({
+    checkPeriod: 86400000 // prune expired entries every 24h
+  }),
+  resave: true,
+  saveUninitialized: false,
+  cookie: {
+    sameSite: 'none', // must be 'none' to enable cross-site delivery
+    secure: 'true',
+  } // must be true if sameSite='none'
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
