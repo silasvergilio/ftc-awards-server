@@ -36,15 +36,15 @@ app.use(cors({
   credentials: true,
 }));
 
-app.use(session({
-  secret: 'Super Secret (change it)',
-  resave: true,
-  saveUninitialized: false,
-  cookie: {
-    sameSite: 'none', // must be 'none' to enable cross-site delivery
-    secure: 'true',
-  } // must be true if sameSite='none'
-}));
+// app.use(session({
+//   secret: 'Super Secret (change it)',
+//   resave: true,
+//   saveUninitialized: false,
+//   cookie: {
+//     sameSite: 'none', // must be 'none' to enable cross-site delivery
+//     secure: 'true',
+//   } // must be true if sameSite='none'
+// }));
 app.use(passport.initialize());
 app.use(passport.session());
 
