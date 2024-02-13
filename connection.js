@@ -6,7 +6,7 @@ var connection = mysql.createPool({
   host: dbConfig.HOST,
   user: dbConfig.USER,
   password: dbConfig.PASSWORD,
-  connectionLimit : 10,
+  connectionLimit : 5,
   migrate: 'safe',
   //port: process.env.DB_PORT,
   database: dbConfig.DB,
