@@ -139,17 +139,23 @@ router.post("/:award", upload.single("file"), async function (req, res) {
   var sql =
     "INSERT INTO ?? (motive,premiado,sala,Teams_idTime) VALUES (?,0,?,(SELECT idTime FROM Teams WHERE text = ?))";
   var values = [req.params.award, reqData.motive, reqData.sala, reqData.text];
-
-  db.query(sql, values, function (err, result) {
-    if (err) {
-      res.status(500).send({
-        SqlError: err,
-        errno: 1010,
-        Status: 500,
-      });
-    }
-    console.log("1 record inserted");
-    res.send("Inserted");
+  try {
+    db.query(sql, values, function (err, result) {
+      if (err) {
+        res.status(500).send({
+          SqlError: err,
+          errno: 1010,
+          Status: 500,
+        });
+  }})
+  console.log("1 record inserted");
+  res.send("Inserted");}
+  catch(error) {
+    console.loge(error);
+  }
+  
+    
+    
   });
 });
 
