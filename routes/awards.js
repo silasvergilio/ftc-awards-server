@@ -151,12 +151,17 @@ router.post("/:award", upload.single("file"), async function (req, res) {
   console.log("1 record inserted");
   res.send("Inserted");}
   catch(error) {
+    res.status(500).send({
+      SqlError: err,
+      errno: 1010,
+      Status: 500,
+    });
     console.loge(error);
   }
   
     
     
   });
-});
+
 
 module.exports = router;
